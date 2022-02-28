@@ -14,14 +14,14 @@ function generatePassword() {
     console.log("button clicked")
     
 // User Prompts
-var passwordLengthUser = prompt( "How many characters should the password be?")
-passwordLengthUser = parseInt(passwordLengthUser);
+var passwordLength = prompt( "How many characters should the password be?")
+passwordLength = parseInt(passwordLength);
 
-if (passwordLengthUser < 8){
+if (passwordLength < 8){
     alert("password must have more than 7 characters");
     return "";
 }
-if (passwordLengthUser >128) {
+if (passwordLength >128) {
     alert("Password must have less than 128 characters");
     return "";
 }
@@ -46,13 +46,15 @@ if (uppercaseCharsChoice) {
  if (specialCharsChoice) {
     passwordChars += specialChars;
  }
- var randomPassword = "";
- for (var i = 0; i < passwordLengthUser; i++) {
-    password += passwordChars[Math.floor(Math.random() * passwordChars.length)];
-    console.log("Random Password")
- 
+ var password = "";
+ for (var i = 0; i < passwordLength; i++) {
+    var random = Math.floor(Math.random() * passwordChars.length);
+    password += passwordChars[random]
+    
  }
-return randomPassword;
+ console.log(password)
+ 
+ return password;
  
 };
 
@@ -63,6 +65,7 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
+
 
 }
 
